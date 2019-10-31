@@ -1,0 +1,12 @@
+{
+	"manifest_version": 2,
+	"name": "pikabu",
+	"version": "1.0",
+	"content_scripts": [
+		{
+			"matches": ["*://*.pikabu.ru/*"],
+			"js": ["pikabu.js"]
+		}
+	]
+
+}
