@@ -1,13 +1,13 @@
 (function(ratingLimit){
 	function isCommentToRemove(comment) {
-		let comment_body = comment.firstElementChild;
-		if (!comment_body) return true;
-		let comment_header = comment_body.firstElementChild;
-		if (!comment_header) return true;
-		let comment_rating = comment_header.firstElementChild;
-		if (!comment_rating) return true;
-		let rating = comment_rating.firstChild.nodeValue;
-		return !(rating > ratingLimit);
+		for (let i = 0; i < 3; i++) {
+			if (comment) {
+				comment = comment.firstElementChild;
+			} else {
+				return true;
+			}
+		}
+		return !(comment.firstChild.nodeValue > ratingLimit);
 	}
 	function removeComments() {
 		var toRemove = [];
