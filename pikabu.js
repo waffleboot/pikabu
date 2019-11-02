@@ -9,9 +9,17 @@
 		}
 		return !(comment.firstChild.nodeValue > ratingLimit);
 	}
+	function checkAndRemove(comment) {
+		if (isCommentToRemove(comment)) {
+			comment.remove();
+		} else {
+			comment.pikabu_remove_comment = true;
+		}
+	}
 	function removeComments() {
 		for (let comment of document.getElementsByClassName('comment')) {
-			setTimeout(()=>{if (isCommentToRemove(comment)) comment.remove()},0);
+			if (comment.pikabu_remove_comment) continue;
+			setTimeout(checkAndRemove,0,comment);
 		}
 	}
 	function setObserver() {
