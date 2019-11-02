@@ -10,16 +10,13 @@
 		return !(comment.firstChild.nodeValue > ratingLimit);
 	}
 	function removeComments() {
-		var toRemove = [];
 		for (let comment of document.getElementsByClassName('comment')) {
-			if (isCommentToRemove(comment)) toRemove.push(comment);
+			setTimeout(()=>{if (isCommentToRemove(comment)) comment.remove()},0);
 		}
-		console.log('removeComments', toRemove.length);
-		toRemove.forEach((e) => e.remove());
 	}
 	function setObserver() {
 		console.log('setObserver');
-		var comments = document.getElementsByClassName('comments__container')
+		var comments = document.getElementsByClassName('comments__container');
 		var observer = new MutationObserver(function(mutations){
 			removeComments();
 		});
