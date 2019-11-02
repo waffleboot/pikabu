@@ -4,7 +4,7 @@
 	"version": "1.0",
 	"content_scripts": [
 		{
-			"matches": ["*://*.pikabu.ru/*"],
+			"matches": ["*://*.pikabu.ru/story/*"],
 			"js": ["pikabu.js"]
 		}
 	]
