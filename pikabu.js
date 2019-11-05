@@ -9,12 +9,12 @@
 		}
 		return comment;
 	}
-	function isRatingToRemove(comment) {
-		comment = getRating(comment);
-		return comment === undefined || !(comment.firstChild.nodeValue > ratingLimit);
+	function isRatingToRemove(rating) {
+		return rating === undefined || !(rating.firstChild.nodeValue > ratingLimit);
 	}
 	function checkAndRemove(comment) {
-		if (isRatingToRemove(comment)) {
+		var rating = getRating(comment);
+		if (isRatingToRemove(rating)) {
 			comment.remove();
 		} else {
 			comment.pikabu_remove_comment = true;
