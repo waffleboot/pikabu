@@ -1,13 +1,17 @@
 (function(ratingLimit){
-	function isRatingToRemove(comment) {
+	function getRating(comment) {
 		for (let i = 0; i < 3; i++) {
 			if (comment) {
 				comment = comment.firstElementChild;
 			} else {
-				return true;
+				return;
 			}
 		}
-		return !(comment.firstChild.nodeValue > ratingLimit);
+		return comment;
+	}
+	function isRatingToRemove(comment) {
+		comment = getRating(comment);
+		return comment === undefined || !(comment.firstChild.nodeValue > ratingLimit);
 	}
 	function checkAndRemove(comment) {
 		if (isRatingToRemove(comment)) {
