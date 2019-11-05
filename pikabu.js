@@ -1,5 +1,5 @@
 (function(ratingLimit){
-	function isCommentToRemove(comment) {
+	function isRatingToRemove(comment) {
 		for (let i = 0; i < 3; i++) {
 			if (comment) {
 				comment = comment.firstElementChild;
@@ -10,7 +10,7 @@
 		return !(comment.firstChild.nodeValue > ratingLimit);
 	}
 	function checkAndRemove(comment) {
-		if (isCommentToRemove(comment)) {
+		if (isRatingToRemove(comment)) {
 			comment.remove();
 		} else {
 			comment.pikabu_remove_comment = true;
