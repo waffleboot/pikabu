@@ -18,6 +18,10 @@
 			comment.remove();
 		} else {
 			comment.pikabu_remove_comment = true;
+			var header = rating.parentElement;
+			header.children[1].remove();
+			header.children[1].remove();
+			header.children[2].remove();
 		}
 	}
 	function removeComments() {
@@ -27,10 +31,9 @@
 		}
 	}
 	function setObserver() {
-		console.log('setObserver');
 		var comments = document.getElementsByClassName('comments__container');
 		var observer = new MutationObserver(function(mutations){
-			removeComments();
+			setTimeout(removeComments,0);
 		});
 		observer.observe(comments[0], {
 			childList: true,
